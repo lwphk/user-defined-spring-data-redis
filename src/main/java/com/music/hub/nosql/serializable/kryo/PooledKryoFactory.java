@@ -19,6 +19,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.Serializer;
 import com.esotericsoftware.kryo.serializers.CompatibleFieldSerializer;
 import com.esotericsoftware.kryo.serializers.DefaultSerializers;
+import com.esotericsoftware.kryo.serializers.FieldSerializer;
 
 import de.javakaffee.kryoserializers.ArraysAsListSerializer;
 import de.javakaffee.kryoserializers.BitSetSerializer;
@@ -87,12 +88,13 @@ final class PooledKryoFactory extends BasePooledObjectFactory<Kryo> {
 //				return super.getDefaultSerializer(type);
 //			}
 //		};
+		
 //		VersionFieldSerializer 扩展了 FieldSerializer，并允许字段具有 @Since(int) 注解来指示它们被添加的版本。
 //		TaggedFieldSerializer 将 FieldSerializer 扩展为仅序列化具有 @Tag(int) 注解的字段，提供向后兼容性，从而可以添加新字段。
 //		CompatibleFieldSerializer 扩展了 FieldSerializer 以提供向前和向后兼容性，这意味着可以添加或删除字段，而不会使先前的序列化字节无效  ,适合长期缓存数据序列化方式
 //		在序列化中第一次遇到某个类时，会写入一个包含字段名称字符串的简单 scheme
 		kryo.setDefaultSerializer(CompatibleFieldSerializer.class);
-//		kryo.getFieldSerializerConfig().setCachedFieldNameStrategy(FieldSerializer.CachedFieldNameStrategy.EXTENDED);
+		kryo.getFieldSerializerConfig().setCachedFieldNameStrategy(FieldSerializer.CachedFieldNameStrategy.EXTENDED);
 		kryo.setReferences(true);
 		kryo.setRegistrationRequired(false);
 		kryo.setClassLoader(Thread.currentThread().getContextClassLoader());

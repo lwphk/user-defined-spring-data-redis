@@ -21,7 +21,9 @@ public class KryoSerializer<T>  implements ISerializer<T>{
 		} catch (Exception e) {
 			
 		}finally{
-			output.close();
+			if(output != null) {
+				output.close();
+			}
 		}
 		return null;
 	}
@@ -37,7 +39,9 @@ public class KryoSerializer<T>  implements ISerializer<T>{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
-			input.close();
+			if(input != null) {
+				input.close();
+			}
 		}
 		return null;
 	}
