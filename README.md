@@ -1,6 +1,16 @@
 # user-defined-spring-data-redis
 原生jedis结合spring，支持同步异步操作
-# demo
+
+# properties配置（默认单机版，哨兵模式需修改）
+	redis.host=r-wz95338595754734.redis.rds.aliyuncs.com
+	redis.port=6379
+	redis.password=xxx
+	redis.maxTotal=100
+	redis.maxIdle=100
+	redis.maxWaitMillis=20000
+	redis.timeout=5000
+
+# 继承 AbstractRedisBaseComponent 
 	public class AbstractRedisBaseComponent <K extends Serializable, V> {
 
 		@Resource(name="redisTemplate")  
@@ -60,7 +70,7 @@
 	
 			@Override
 			
-			public User redisAction(Jedis jedis) {
+			public User redisAction(redis.clients.jedis.Jedis jedis) {
 			
 				ISerializer<User> serializer = redisTemplate.getValueSerializer();
 				
