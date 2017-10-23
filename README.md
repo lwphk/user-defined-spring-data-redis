@@ -1,5 +1,27 @@
 # user-defined-spring-data-redis
 原生jedis结合spring，支持同步异步操作
+# demo
+	public class AbstractRedisBaseComponent <K extends Serializable, V> {
+
+		@Resource(name="redisTemplate")  
+		protected RedisTemplate<K, V> redisTemplate;
+		
+	}
+	
+	@Component
+	public class StringRedisComponent extends  AbstractRedisBaseComponent<String, String>{
+
+		public String get(final String key) {
+			return redisTemplate.execute(new RedisCallback<String>() {
+				@Override
+				public String redisAction(Jedis jedis) {
+					return new String(jedis.get(key));
+				}
+
+			});
+		}
+	}
+
 # RedisCallback 同步有返回值
 
   	final String key = "";
