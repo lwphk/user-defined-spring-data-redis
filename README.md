@@ -3,7 +3,7 @@
 
 序列化使用kryo，kryo是非线程安全的并且对象创建成本高，这里使用Apache Common-pool2对象池进行管理
 
-# properties配置（默认单机版，哨兵模式需修改）
+# properties配置
 	redis.host=r-wz95338595754734.redis.rds.aliyuncs.com
 	redis.port=6379
 	redis.password=xxx
