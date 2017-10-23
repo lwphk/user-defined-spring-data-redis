@@ -18,6 +18,8 @@
 		@Resource(name="redisTemplate")  
 		protected RedisTemplate<K, V> redisTemplate;
 		
+		//.....
+		
 	}
 	
 	@Component
