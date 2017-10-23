@@ -1,5 +1,5 @@
 # user-defined-spring-data-redis
-原生jedis结合spring，支持同步异步操作
+原生jedis结合spring，支持同步，异步操作。 异步操作由ThreadPoolTaskExecutor线程池执行。
 
 # properties配置（默认单机版，哨兵模式需修改）
 	redis.host=r-wz95338595754734.redis.rds.aliyuncs.com
