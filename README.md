@@ -2,7 +2,7 @@
 原生jedis结合spring，支持同步异步操作
 # RedisCallback 同步有返回值
 
-  final String key = "";
+  	final String key = "";
   
 	String result = redisTemplate.execute(new RedisCallback<String>() {
 	
@@ -18,13 +18,13 @@
 	
 # RedisCallbackAsync 异步无返回值
   
-  redisTemplate.execute(new RedisCallbackAsync() {
+  	redisTemplate.execute(new RedisCallbackAsync() {
   
 			@Override
 			
 			public void redisAction(redis.clients.jedis.Jedis jedis) {
 			
-              //
+				 //
 	      
 			}
 			
@@ -34,7 +34,7 @@
 # RedisCallbackFuture 
 
 
-  java.util.concurrent.Future<User> future = redisTemplate.execute(new RedisCallbackFuture<User>() {
+ 	 java.util.concurrent.Future<User> future = redisTemplate.execute(new RedisCallbackFuture<User>() {
 	
 			@Override
 			
